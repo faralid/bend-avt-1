@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .aside{
+            padding: 1rem;
+            width: 25%;
+            float: left;
+            background: orange;
+        }
+        .content{
+            /*margin-left: 25%;*/
+            float: left;
+            width: 75%;
+            background: teal;
+            padding: 1rem;
+        }
+        .row:after{
+            content: "";
+            display: table;
+            clear: both
+        }
+        .col{
+            padding: 20px;
+            float: left;
+            box-sizing: border-box;
+        }
+        @media screen and (min-width:600px){
+            .col{
+                width: 100%;
+            }
+        }
+        @media screen and (min-width:640px){
+            .col{
+                width: 33.3333333333333%;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+  <div class="row">
+      <div class="col">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis facere ratione adipisci vel ipsum error tempora voluptatum laudantium provident inventore, qui, ad alias aut odit laboriosam. Officia magnam commodi odio.</div>
+      <div class="col">Numquam earum, impedit explicabo non sed ex doloribus aliquid nemo obcaecati accusamus quibusdam, porro placeat ut incidunt ea! Dolorum veniam ut ab nam repudiandae, molestias impedit animi quasi saepe neque.</div>
+      <div class="col">Adipisci earum nulla, sint molestias deserunt dolor perferendis doloremque voluptatum. Beatae expedita, quibusdam itaque nemo quae eaque, animi voluptates officiis eum. Optio consequatur sit veniam non, repudiandae deserunt id nisi.</div>
+  </div>
+  <div class="row">
+<div class="aside">Lorem ipsum dolor sit amet,</div>
+<div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequuntur dignissimos hic, ipsam nemo provident tenetur. Architecto aut blanditiis deleniti dignissimos dolor, et eveniet maiores recusandae suscipit veniam vitae voluptatibus!</div>
+  </div>
+</body>
+</html>   

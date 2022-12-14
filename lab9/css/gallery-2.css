@@ -1,0 +1,34 @@
+table {
+    border-radius: 10px;
+    /*border-radius: 50px 0 0 500px;*/
+    width: 900px;
+    /* Ширина таблицы */
+    border: 3px solid black;
+    /* Рамка вокруг таблицы */
+    border-bottom: none;
+    /* Убираем линию снизу */
+  }
+
+  TD,
+  TH {
+    padding: 3px;
+    /* Поля вокруг содержимого ячеек */
+
+  }
+
+  TH {
+    text-align: left;
+    /* Выравнивание по левому краю */
+    background: gray;
+    /* Цвет фона */
+    color: yellow;
+    /* Цвет текста */
+    border: 6px solid white;
+    /* Рамка вокруг ячеек */
+
+  }
+
+  TD {
+    border-bottom: 3px solid black;
+    /* Линия снизу */
+  }

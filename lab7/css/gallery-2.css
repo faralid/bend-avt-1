@@ -1,0 +1,24 @@
+.table {
+    display: table;
+    border: 1px solid blue;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 2rem;
+}
+
+.tableRow {
+    display: table-row;
+    border: 1px solid blue;
+    margin-bottom: 2rem;
+}
+
+.tableCell {
+    display: table-cell;
+    border: 1px solid blue;
+    padding: 50x;
+
+}
+
+.alignTema {
+    vertical-align: middle;
+}

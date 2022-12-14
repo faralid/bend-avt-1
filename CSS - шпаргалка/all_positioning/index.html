@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Позиционирование CSS</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css" rel="stylesheet">
+<style>
+*{
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  background: linear-gradient(to right, #4286f4, #373B44);
+}
+.main-heading{
+  color: #fff;
+  font-weight: 500;
+  text-shadow: 0 1PX 2PX rgba(0,0,0,.1);
+}
+
+.tabbertabhide {
+ display:none;
+}
+
+.tabber {
+}
+.tabberlive {
+ margin-top:1em;
+}
+
+.tabbernav{
+ margin:0;
+ padding:0;
+ list-style: none;
+}
+
+.tabbernav li{
+ list-style: none;
+ margin: 0;
+ padding:0;
+ display: inline;
+}
+
+.tabbernav li a{
+ border-top-left-radius: .25rem;
+ border-top-right-radius: .25rem;
+ font-weight: 600;
+ width: 4rem;
+ height: 2.5rem;
+ line-height: 2.5rem;
+ text-align: center;
+ display: inline-block;
+ margin-right: .5rem;
+ background: #DDE;
+ text-decoration: none;
+}
+
+.tabbernav li a:link { color: #448; }
+.tabbernav li a:visited { color: #667; }
+
+.tabbernav li a:hover{
+ color: #000;
+ background: #AAE;
+ border-color: #227;
+}
+
+.tabbernav .tabberactive a{
+ background: #f7fafc;
+}
+
+.tabbernav .tabberactive a:hover{
+ color: #000;
+ background: white;
+}
+
+.page{
+  padding: 1rem;
+}
+
+.heading{
+  color: #32325d;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.content__tab{
+  padding: 1rem 2rem;
+  background: #f7fafc;
+  color: #425466;
+  border-radius: 0 .25rem .25rem .25rem;
+  overflow: auto;
+  height: 600px;
+}
+.content__tab p{
+  line-height: 1.48;
+  margin-bottom: 1.25rem;
+}
+.content__code{
+  margin: 1rem 0;
+}
+.content__property{
+  font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+  font-size: 1rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: .5rem .75rem;
+  background: #06182c;
+  border-radius: .25rem;
+  color:#8095ff;
+}
+.content__tab .inline-code{
+  padding: .2rem .5rem;
+}
+.content__list{
+  margin-top: 1rem;
+}
+.content__list li{
+  margin-bottom: .5rem;
+  line-height: 1.48;
+}
+.content__info{
+  background: rgba(0,153,204,.1);
+  border-left: 2px solid #09c;
+  padding: .5rem 1rem .5rem 2rem;
+  font-size: .875rem
+}
+
+
+#example {
+ float:right;
+}
+
+#example div {
+}
+
+#div-before, #div-after {
+ background-color:#88d;
+ color:#000;
+}
+#div-1 {
+ width:400px;
+ background-color:#000;
+ color:#fff;
+}
+#div-1-padding {
+ padding:10px;
+}
+#div-1a {
+ background-color:#f92672;
+ color:#fff;
+ padding: .5rem;
+}
+#div-1b {
+ background-color:#4caf50;
+ color:#fff;
+ padding: .5rem;
+}
+#div-1c {
+ background-color:#2196f3;
+ color:#fff;
+ padding: .5rem;
+}
+#example div p {
+ margin:0 .25em;
+ padding:.25em 0;
+}
+#description {
+ float:left;
+ width:40%;
+}
+
+</style>
+<link rel="alternate stylesheet" href="1.css"  title="1" media="screen">
+<link rel="alternate stylesheet" href="2.css"  title="2" media="screen">
+<link rel="alternate stylesheet" href="3.css"  title="3" media="screen">
+<link rel="alternate stylesheet" href="4.css"  title="4" media="screen">
+<link rel="alternate stylesheet" href="5.css"  title="5" media="screen">
+<link rel="alternate stylesheet" href="6.css"  title="6" media="screen">
+<link rel="alternate stylesheet" href="7.css"  title="7" media="screen">
+<link rel="alternate stylesheet" href="8.css"  title="8" media="screen">
+</head>
+
+<body class="page">
+<div id="content">
+<h1 class="main-heading">CSS Позиционирование</h1>
+<div class="description" id="description">
+
+<div class="tabber">
+  <div id="text-1" class="tabbertab content__tab" title="1">
+    <h2 class="heading">Cтатичное позиционирование</h2>
+    <div class="content__property inline-code">position:static</div>
+    <p>По&nbsp;умолчанию позиционирование всех элементов на&nbsp;веб-странице <strong>статичное</strong> <code class="lang-css inline-code">position:static</code>,
+      это&nbsp;означает, что&nbsp;элементы находятся в&nbsp;обычном потоке документа html, то&nbsp;есть идут друг за&nbsp;другом, согласно написанию в&nbsp;коде.</p>
+    <p>В реальной жизни, вы&nbsp;не&nbsp;будете использовать это&nbsp;значение пока вам не&nbsp;потребуется переопределить ранее заданное позиционирование на&nbsp;статичное:</p>
+    <div class="content__code">
+    <pre><code class="language-css">#div-1 {
+  position: static;
+}</code>
+    </pre>
+    </div>
+</div>
+<div id="text-2" class="tabbertab content__tab" title="2">
+<h2 class="heading">Относительное позиционирование</h2>
+  <div class="content__property inline-code">position:relative</div>
+  <p>Применяется если вам&nbsp;необходимо какой-то элемент веб-страницы переместить <strong>относительно его&nbsp;начального расположения</strong> в&nbsp;документе на&nbsp;другое место.</p>
+  <p>Свойствами <code class="inline-code lang-css">top</code>&nbsp;(верх) и&nbsp;<code class="inline-code lang-css">bottom</code>&nbsp;(низ) вы&nbsp;задаете смещение по&nbsp;вертикали от&nbsp;нормального положения элемента,
+    свойствами <code class="inline-code lang-css">left</code>&nbsp;(лево) и&nbsp;<code class="inline-code lang-css">right</code>&nbsp;(право) &mdash; вы&nbsp; можете установить горизонтальное смещение.</p>
+<p>Давайте переместим блок <b>div-1</b> на&nbsp;<b>20</b> пикселей&nbsp;вниз и&nbsp;на&nbsp;<b>40</b> пикселей влево:</p>
+  <div class="content__code">
+<pre><code class="language-css">#div-1 {
+ position: relative;
+ top: 20px;
+ left: -40px;
+}</code>
+</pre>
+</div>
+<p>Посмотрите на&nbsp;пространство, которое ранее занимал блок&nbsp;<b>div-1</b>, перед тем, как мы его переместили: теперь там пустое пространство.
+  Оно&nbsp;не&nbsp;схлопнулось. Следующий в&nbsp;документе элемент <b>div-after</b> никуда не&nbsp;сдвинулся, когда мы&nbsp;сместили&nbsp;<b>div-1</b>.
+  Это&nbsp;произошло потому, что&nbsp;пространство по-прежнему в&nbsp;документе занимает <b>div-1</b>, несмотря на&nbsp;его перемещение и&nbsp;относительно этого места отсчитываются коодинаты смещения.</p>
+<p>Cвойство <code class="inline-code lang-css">position:relative</code> выглядит <b>не&nbsp;слишком полезным</b> в&nbsp;данном случае.
+  Но оно еще пригодится нам для&nbsp;других задач.</p>
+</div>
+
+<div id="text-3" class="content__tab tabbertab" title="3">
+<h2 class="heading">Абсолютное позиционирование</h2>
+<div class="content__property inline-code">position:absolute</div>
+<p>Когда вы&nbsp;задаете значение <code class="inline-code lang-css">position:absolute</code>, элемент извлекается из&nbsp;стандартного потока документа и&nbsp;размещается там, где вы&nbsp;ему укажете.</p>
+<p>Давайте переместим блок <b>div-1a</b> в правый верхний угол страницы:</p>
+<div class="content__code">
+<pre><code class="lang-css">#div-1a {
+ position: absolute;
+ top: 0;
+ right: 0;
+ width: 200px;
+}</code>
+</pre>
+</div>
+
+<p>В&nbsp;этот раз, когда мы&nbsp;убрали <b>div-1a</b> из&nbsp;потока документа, другие элементы расположились на&nbsp;странице по&nbsp;другому:
+  <b>div-1b</b>, <b>div-1c</b> и&nbsp;<b>div-after</b> переместились в&nbsp;потоке выше, так как место, занимаемое <b>div-1a</b> освободилось.</p>
+<p>Вы&nbsp;можете заметить, что&nbsp;<b>div-1a</b> расположился в&nbsp;правом верхнем углу веб-страницы. Хорошо, что мы&nbsp;можем располагать вещи относительно всего документа, но&nbsp;это&nbsp;имеет ограниченное применение в&nbsp;реальной жизни.</p>
+<p>Что мы хотим на самом деле, так это расположить блок <b>div-1a</b> <strong>относительно</strong>  <b>div-1</b>. И&nbsp;в&nbsp;этом нам&nbsp;поможет предыдущее свойство <code class="inline-code lang-css">position:relative</code>.</p>
+<div class="content__info">
+<h4>Как работает абсолютное позиционирование:</h4>
+<p>Элемент удаляется из&nbsp;обычного потока документа, и&nbsp;на&nbsp;месте элемента в&nbsp;макете не&nbsp;остается пустого места.</p>
+  <ul class="content__list"><li>Он&nbsp;будет расположен относительно его&nbsp;<strong>ближайшего позиционированного предка<sup>*</sup></strong>, если таковой имеется;</li>
+    <li>в&nbsp;противном случае он&nbsp;помещается относительно начального содержащего блока (области &lt;html&gt;, представляющей вьюпорт страницы).</li>
+  </ul>
+  <p>Если свойство <b>position</b> имеет значение <b>absolute</b>, то&nbsp;<b>содержащий блок</b> задаётся краем padding бокса <strong><sup>*</sup>ближайшего позиционированного предка</strong> (у&nbsp;которого, свойство <b>position</b> имеет значение <b>fixed</b>, <b>absolute</b>, <b>relative</b> или&nbsp;<b>sticky</b>).</p>
+  <p>Cодержащий блок может также задаваться краем padding бокса ближайшего предка, у которого:
+<ul class="content__list">
+  <li>Свойство <b>transform</b> или <b>perspective</b> имеет значение отличное от none.</li>
+  <li>Свойство <b>will-change</b> имеет значение <b>transform</b> или <b>perspective</b>.</li>
+  <li>Свойство <b>filter</b>  имеет значение отличное от none или <b>will-change</b> (работает только в Firefox).</li>
+  <li>Свойство <b>contain</b> имеет значение <b>paint</b> (например, contain: paint;).</li>
+</ul>
+</p>
+  </div>
+  <p>Его конечная позиция определяется значениями <code class="inline-code lang-css">top</code>, <code class="inline-code lang-css">right</code>, <code class="inline-code lang-css">bottom</code>, и&nbsp;<code class="inline-code lang-css">left</code>.</p>
+</div>
+
+<div id="text-4" class="content__tab tabbertab" title="4">
+<h2 class="heading">Относительное и&nbsp;абсолютное позиционирование</h2>
+<div class="content__property inline-code">position:relative</div> + <div class="content__property inline-code">position: absolute</div>
+<div class="content__info">
+<h4>Абсолютное позиционирование:</h4>
+  <ul class="content__list">
+    <li>Элемент&nbsp;будет расположен относительно его&nbsp;<strong>ближайшего относительно позиционированного предка</strong> (у&nbsp;которого, свойство position имеет значение fixed, absolute, relative или sticky), если таковой имеется;</li>
+  </ul>
+</p>
+  </div>
+<p>Если мы зададим <code class="inline-code lang-css">position:relative</code> для&nbsp;<b>div-1</b>, то&nbsp;любые <strong>абсолютно спозиционированные элементы внутри <b>div-1</b></strong> будут позиционироваться относиельно <b>div-1</b>.</p>
+<p>Затем, если мы&nbsp;зададим <storong>абсолютное позиционирование</storong> <code class="inline-code lang-css">position:absolute</code> для&nbsp;<b>div-1a</b>, мы&nbsp;сможем переместить его в&nbsp;верхний правый угол <b>div-1</b>:</p>
+<div class="content__code">
+<pre><code class="lang-css">#div-1 {
+ position:relative;
+}
+#div-1a {
+ position:absolute;
+ top:0;
+ right:0;
+ width:200px;
+}</code>
+</pre>
+</div>
+<p>Таким образом, если вы&nbsp;хотите контролировать позиционирование одного блока относительного другого, то&nbsp;вы&nbsp;можете использовать этот прием родитель&nbsp;&mdash; relative, дочерние элементы&nbsp;&mdash; absolute.</p>
+<p>Вам совершенно необязательно куда-то перемещать родителя относительно его начальных координат.
+Если вы&nbsp;не&nbsp;задаете координат, <strong>relative&nbsp;&mdash; родительский блок</strong> остается на&nbsp;своем месте в&nbsp;потоке, а&nbsp;его <strong>дочерние absolute&nbsp;&mdash; элементы</strong> вы&nbsp;можете располагать как вам захочется уже относительно него.</p>
+<p>Кроме того, вы&nbsp;также можете родителя&nbsp;&mdash; делать <b>не&nbsp;только relative</b>, если это будет необходимо (<b>fixed</b>, <b>absolute</b>, <b>relative</b> или <b>sticky</b>).</p>
+<p>То, есть возможно позиционирование <b>relative</b> &gt; <b>absolute</b> &gt; <b>absolute</b>.<br>Каждый дочерний absolute - элемент, располагается относительно своего ближайшего спозиционированного родителя.</p>
+</div>
+
+<div id="text-5" class="content__tab tabbertab" title="5">
+<h2 class="heading">Фиксированное позиционирование</h2>
+<div class="content__property inline-code">position:fixed</div>
+<p>Элемент выбивается из&nbsp;обычного потока документа, и&nbsp; не занимает пространство среди обычных элементов документа.</p>
+<p>В данном примере не имеет значения тип позиционирования <b>div-1</b>.</p>
+<p>Он&nbsp;позиционируется относительно viewport исходного содержащего блока (&lthtml&gt;), за&nbsp;исключением случаев, когда один из&nbsp;его предков имеет свойство <b>transform</b>, <b>perspective</b>, или <b>filter</b>, установленное на что-то иное, кроме none (см. <a href="https://www.w3.org/TR/css-transforms-1/#propdef-transform" target="_blank">CSS Transforms Spec</a>). В&nbsp;этом случае этот&nbsp;предок поведёт себя как <a href="https://developer.mozilla.org/ru/docs/Web/CSS/Containing_block" target="_blank">содержащий блок</a>.</p>
+<div class="content__info">
+  <p><strong>Проще:</strong><br>Если вы&nbsp;сделаете элемент <b>fixed</b>, а&nbsp;к&nbsp;его&nbsp;родителю примените фильтр или&nbsp;трансформацию - то&nbsp;фиксированное позиционирование переключится с&nbsp;вьюпорта всего документа на&nbsp;размер родителя с&nbsp;трансформацией или&nbsp;фильтром!</p>
+</div>
+
+<div class="content__code">
+<pre><code class="lang-css">#div-1 {
+ position:relative;
+}
+#div-1a {
+ position:fixed;
+ top: 50%;
+ left: 50%;
+ width: 200px;
+}</code>
+</pre>
+</div>
+<p>Позиция фиксированно спозиционированного элемента определяется значениями <code class="inline-code lang-css">top</code>, <code class="inline-code lang-css">right</code>, <code class="inline-code lang-css">bottom</code>, и&nbsp;<code class="inline-code lang-css">left</code>.</p>
+<p>В&nbsp;печатных документах элемент помещается в&nbsp;одно и&nbsp;то&nbsp;же&nbsp;положение на&nbsp;каждой странице.</p>
+</div>
+
+<div id="text-6" class="content__tab tabbertab" title="6">
+<h2 class="heading">Фиксированное позиционирование + трансформация</h2>
+<div class="content__property inline-code">position:fixed</div> + <div class="content__property inline-code">transform: translate(-50%,-50%);</div>
+<p>Если вы&nbsp;хотите фиксированно спозиционировать элемент по центру веб-страницы относительно вьюпорта, вы&nbsp;можете для&nbsp;фиксированного элемента задать координаты 50% от&nbsp;верхней и&nbsp;левой границ. При&nbsp;этом, позиционирование будет вестись от&nbsp;левого верхнего угла элемента.</p>
+<p>Для&nbsp;компенсации координат центра вы&nbsp;можете применить трансформацию со&nbsp;смещением элемента на&nbsp;половину ширины влево и&nbsp;на&nbsp;половину высоты наверх. Так как координатные оси отсчета идут сверху&nbsp;вниз и&nbsp;слева&nbsp;направо, то&nbsp;процентные значения будут отрицательными.</p>
+<div class="content__code">
+<pre><code class="lang-css">#div-1a {
+ position:fixed;
+ top: 50%;
+ left: 50%;
+ width: 200px;
+ transform: translate(-50%,-50%);
+}</code>
+</pre>
+</div>
+
+</div>
+
+<div id="text-7" class="content__tab tabbertab" title="7">
+<h2 class="heading">&laquo;Прилипающее&raquo; позиционирование</h2>
+<div class="content__property inline-code" id="sticky">position:sticky</div>
+<p>При задании позиционирования <strong>sticky</strong> элемент залипает, когда область просмотра достигает определённой позиции.</p>
+<p>&laquo;Липкое&raquo; позиционирование состоит из&nbsp;двух основных частей: &laquo;липкого&raquo; элемента и&nbsp;&laquo;липкого&raquo; контейнера.</p>
+<ul class="content__list"><li><strong>&laquo;Липкий&raquo; элемент</strong>&nbsp;&mdash; это элемент, которому мы&nbsp;задали <code class="inline-code lang-css">position:sticky</code>. Элемент будет становиться плавающим, как только область видимости достигнет определённой позиции, например <code class="inline-code lang-css">top:0</code>.</li>
+<li><strong>&laquo;Липкий&raquo; контейнер</strong>&nbsp;&mdash; это HTML-элемент, который оборачивает &laquo;липкий&raquo; элемент. Это максимальная область, в&nbsp;которой может перемещаться наш элемент.</li>
+</ul>
+<p>Когда вы&nbsp;задаёте элементу <code class="inline-code lang-css">position: sticky</code>, его родитель автоматически становится <b>&laquo;липким&raquo; контейнером</b>!</p>
+<p>Контейнер будет являться областью видимости для элемента. &laquo;Липкий&raquo; элемент не&nbsp;может выйти за&nbsp;пределы своего &laquo;липкого&raquo; контейнера.</p>
+<p>&laquo;Липкий&raquo; элемент не&nbsp;будет залипать если он&nbsp;&mdash; единственный дочерний элемент контейнера.</p>
+<div class="content__code">
+<pre><code class="lang-css">#sticky{
+  position: sticky;
+  top: 0;
+}</code>
+</pre>
+</div>
+
+<p><code class="inline-code lang-css">position: sticky</code> ведёт себя не&nbsp;так, как другие типы позиционирования. Но, с&nbsp;другой стороны, у&nbsp;них есть определённые сходства:</p>
+<ul class="content__list">
+  <li><b>relative</b> или <b>static</b>&nbsp;&mdash; &laquo;липкий&raquo; элемент похож на&nbsp;элемент со&nbsp;статическим или относительным позиционированием поскольку сохраняет свою естественную позицию в&nbsp;DOM (остаётся в&nbsp;потоке).</li>
+  <li><b>fixed</b>&mdash;когда элемент залипает, то&nbsp;ведёт себя как будто у&nbsp;него заданы стили position: fixed, остаётся на&nbsp;той&nbsp;же позиции в&nbsp;области видимости и&nbsp;вырывается из&nbsp;потока документа.</li>
+  <li><b>absolute</b>&mdash;в конце доступной для перемещений области элемент останавливается и&nbsp;остаётся поверх другого элемента. Точно также, как ведёт себя абсолютно спозиционированный элемент в&nbsp;контейнере с&nbsp;position: relative.</li>
+</ul>
+</div>
+
+<div id="text-8" class="content__tab tabbertab" title="8">
+<h2 class="heading">Позиционирование элементов по&nbsp;оси&nbsp;z</h2>
+<div class="content__property inline-code">z-index</div>
+<p>Свойство <b>z-index</b> определяет положение элемента и&nbsp;нижестоящих элементов по&nbsp;оси&nbsp;z.</p>
+<p>В&nbsp;случае перекрытия элементов, это&nbsp;значение определяет <b>порядок наложения</b>. В&nbsp;общем случае, элементы с&nbsp;большим z-index перекрывают элементы с&nbsp;меньшим.</p>
+<p>В&nbsp;одном контексте наложения элементы перекрывают друг друга согласно порядку следования в&nbsp;документе, то&nbsp;есть последний элемент &mdash; поверх предыдущего.</p>
+<div class="content__code">
+<pre><code class="lang-css">#div-1 {
+   position:relative;
+  }
+  #div-1a {
+   position:absolute;
+   top:0;
+   left:10px;
+   width:200px;
+   z-index: 1;
+  }
+  #div-1b {
+   position:absolute;
+   top:0;
+   left:0;
+   width:200px;
+  }</code></pre>
+</div>
+<p>Используя <b>z-индекс для&nbsp;позиционируемых элементов</b>, мы&nbsp;можем изменить порядок наложения элементов, заданный по&nbsp;умолчанию.</p>
+<p>При применении определенных CSS-свойств элемент может формировать <a href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_Positioning/Understanding_z_index" target="_blank">контекст&nbsp;наложения</a>.</p>
+<div class="content__info">
+<p><a href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context" target="_blank">Контекст наложения (stacking context)</a>&nbsp;&mdash; это&nbsp;концепция трёхмерного расположения HTML-элементов вдоль оси&nbsp;Z&nbsp;по&nbsp;отношению к&nbsp;пользователю, находящемуся перед экраном.  HTML-элементы занимают это&nbsp;место по&nbsp;порядку, основанному на&nbsp;атрибутах элемента.</p>
+<pre>	     |	   |	     |	  |
+	     |		|    |	  |	⇦ ☻
+	     |		|	  |	user
+z-index:  canvas  -1	0    1	  2
+</pre>
+</div>
+<p><strong>Значения z-индекса имеют смысл только в&nbsp;одинаковом контексте наложения</strong>.</p>
+</div>
+
+
+</div><!-- /class=tabber -->
+
+
+</div><!-- /id="description -->
+
+
+
+<div id="example">
+<div id="div-before">
+<p>id = div-before</p>
+</div>
+
+<div id="div-1">
+<div id="div-1-padding">
+
+<p>id = div-1</p>
+
+<div id="div-1a">
+<p>id = div-1a</p>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Integer pretium dui sit amet felis. Integer sit amet diam. Phasellus ultrices viverra velit.</p>
+</div>
+
+<div id="div-1b">
+<p>id = div-1b</p>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Integer pretium dui sit amet felis. Integer sit amet diam. Phasellus ultrices viverra velit. Nam mattis, arcu ut bibendum commodo, magna nisi tincidunt tortor, quis accumsan augue ipsum id lorem.</p>
+</div>
+
+<div id="div-1c"><p>id = div-1c</p></div>
+
+</div></div><!-- /id=div-1-padding /id=div-1 -->
+
+<div id="div-after">
+<p>id = div-after</p>
+</div>
+
+</div><!-- /id=example -->
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script>
+function chooseStyle(title)
+{
+  setActiveStyleSheet(title);
+}
+let tabberOptions = {
+  onTabClick:
+  function(tabIndex)
+  {
+    chooseStyle(tabIndex+1);
+  }
+};
+</script>
+<script src="styleswitcher.js"></script>
+<script src="tabber.js"></script>
+</body>
+</html>
